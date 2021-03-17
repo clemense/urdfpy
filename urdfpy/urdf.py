@@ -1443,8 +1443,8 @@ class JointLimit(URDFType):
     """
 
     _ATTRIBS = {
-        'effort': (float, True),
-        'velocity': (float, True),
+        'effort': (float, False),
+        'velocity': (float, False),
         'lower': (float, False),
         'upper': (float, False),
     }
@@ -1464,7 +1464,7 @@ class JointLimit(URDFType):
 
     @effort.setter
     def effort(self, value):
-        self._effort = float(value)
+        self._effort = float(value) if value is not None else value
 
     @property
     def velocity(self):
@@ -1474,7 +1474,7 @@ class JointLimit(URDFType):
 
     @velocity.setter
     def velocity(self, value):
-        self._velocity = float(value)
+        self._velocity = float(value) if value is not None else value
 
     @property
     def lower(self):
