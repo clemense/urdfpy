@@ -783,7 +783,7 @@ class Texture(URDFType):
 
     def __init__(self, filename, image=None):
         if image is None:
-            image = PIL.image.open(filename)
+            image = PIL.Image.open(filename)
         self.filename = filename
         self.image = image
 
