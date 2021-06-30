@@ -581,8 +581,9 @@ class Mesh(URDFType):
         meshes = load_meshes(fn)
         if combine:
             # Delete visuals for simplicity
-            for m in meshes:
-                m.visual = trimesh.visual.ColorVisuals(mesh=m)
+            # Removing this as it whipes textures
+            # for m in meshes:
+            #     m.visual = trimesh.visual.ColorVisuals(mesh=m)
             meshes = [meshes[0] + meshes[1:]]
         kwargs['meshes'] = meshes
 
