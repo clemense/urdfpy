@@ -581,9 +581,8 @@ class Mesh(URDFType):
         meshes = load_meshes(fn)
         if combine:
             # Delete visuals for simplicity
-            # Removing this as it whipes textures
-            # for m in meshes:
-            #     m.visual = trimesh.visual.ColorVisuals(mesh=m)
+            for m in meshes:
+                m.visual = trimesh.visual.ColorVisuals(mesh=m)
             meshes = [meshes[0] + meshes[1:]]
         kwargs['meshes'] = meshes
 
@@ -1444,14 +1443,14 @@ class JointLimit(URDFType):
     """
 
     _ATTRIBS = {
-        'effort': (float, True),
-        'velocity': (float, True),
+        # 'effort': (float, True),
+        # 'velocity': (float, True),
         'lower': (float, False),
         'upper': (float, False),
     }
     _TAG = 'limit'
 
-    def __init__(self, effort, velocity, lower=None, upper=None):
+    def __init__(self, effort=1.0, velocity=1.0, lower=None, upper=None):
         self.effort = effort
         self.velocity = velocity
         self.lower = lower
