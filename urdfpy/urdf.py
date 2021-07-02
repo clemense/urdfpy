@@ -783,7 +783,7 @@ class Texture(URDFType):
 
     def __init__(self, filename, image=None):
         if image is None:
-            image = PIL.image.open(filename)
+            image = PIL.Image.open(filename)
         self.filename = filename
         self.image = image
 
@@ -1443,14 +1443,14 @@ class JointLimit(URDFType):
     """
 
     _ATTRIBS = {
-        'effort': (float, True),
-        'velocity': (float, True),
+        # 'effort': (float, True),
+        # 'velocity': (float, True),
         'lower': (float, False),
         'upper': (float, False),
     }
     _TAG = 'limit'
 
-    def __init__(self, effort, velocity, lower=None, upper=None):
+    def __init__(self, effort=1.0, velocity=1.0, lower=None, upper=None):
         self.effort = effort
         self.velocity = velocity
         self.lower = lower
